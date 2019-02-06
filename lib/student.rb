@@ -66,4 +66,13 @@ class Student
    sql = "UPDATE students SET name = ?, grade = ? WHERE id = ?"
    DB[:conn].execute(sql, self.name, self.grade, self.id)
  end
+ 
+ self.update
+  else
+    sql = <<-SQL
+      INSERT INTO songs (name, grade)
+      VALUES (?, ?)
+    SQL
+    DB[:conn].execute(sql, self.name, self.album)
+    @id = DB[:conn].execute("SELECT last_insert_rowid() FROM students")[0][0]
 end
