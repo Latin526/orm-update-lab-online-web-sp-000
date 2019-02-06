@@ -37,7 +37,7 @@ def save
     self.update
   else
     sql = <<-SQL
-      INSERT INTO student (name, grade, id)
+      INSERT INTO student (name, grade)
       VALUES (?, ?)
     SQL
     DB[:conn].execute(sql, self.name, self.grade, self.id)
